@@ -43,8 +43,7 @@ public class BookingMailController extends HttpServlet {
 		final String SUBJECT = req.getParameter("subject"); //  <<------------------------------수정하세요
 
 		// 메일 본문
-		final String BODY = String.join( "<h1>구글 SMTP Email Test</h1>",
-				"<p>javax.mail을 이용한 구글 smtp 이메일 전송 테스트</p>" ,req.getParameter("content")); //  <<------------------------------수정하세요
+		final String BODY = String.join(req.getParameter("content")); //  <<------------------------------수정하세요
 
 		// 인증 객체
 		Authenticator auth = new MailAuth("mailiddlqslek", "qciizboevulkjyms"); //  <<------------------------------수정하세요
@@ -65,8 +64,8 @@ public class BookingMailController extends HttpServlet {
 		// 메시지 생성
 		MimeMessage msg = new MimeMessage(session); 
 		try {
-			msg.setFrom(new InternetAddress(FROMNAME + "<"+FROM+">"));
-			//			msg.setFrom(new InternetAddress(FROM, FROMNAME+"<"+FROM+">"));
+//			msg.setFrom(new InternetAddress(FROMNAME + "<"+FROM+">"));
+			msg.setFrom(new InternetAddress(FROM, FROMNAME));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
 			msg.setSubject(SUBJECT); 
 			msg.setContent(BODY, "text/html;charset=utf-8");
