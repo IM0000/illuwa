@@ -86,6 +86,52 @@ function preview(e, p){
 	reader.readAsDataURL(files[0])
 
 }
+//입력 여부 확인
+function checkForm() {
+	if( !$("input[name=roadAddress]").val() ) {
+		alert('주소검색을 해주세요.');
+		return false;
+	} else if ( !$("input[name=detailAddress]").val() ) {
+		alert('상세주소를 입력하세요.');
+		$("input[name=detailAddress]").focus();
+		return false;
+	} else if ( !$("input[name=roomName]").val() ) {
+		alert('숙소명을 입력하세요.');
+		$("input[name=roomName]").focus();
+		return false;
+	} else if ( !$("input[name=roomGuests]").val() ) {
+		alert('최대숙박인원을 입력하세요.');
+		$("input[name=roomGuests]").focus();
+		return false;
+	} else if ( !$("input[name=roomBedroom]").val() ) {
+		alert('침실 수를 입력하세요.');
+		$("input[name=roomBedroom]").focus();
+		return false;
+	} else if ( !$("input[name=roomBed]").val() ) {
+		alert('침대/침구류 수를 입력하세요.');
+		$("input[name=roomBed]").focus();
+		return false;
+	} else if ( !$("input[name=roomBathroom]").val() ) {
+		alert('욕실 수를 입력하세요.');
+		$("input[name=roomBathroom]").focus();
+		return false;
+	} else if ( !$("input[name=price]").val() ) {
+		alert('1박당 비용을 입력하세요.');
+		$("input[name=price]").focus();
+		return false;
+	} else if ( !$("textarea[name=roomDesc]").val() ) {
+		alert('숙소 설명을 입력하세요.');
+		$("textarea[name=roomDesc]").focus();
+		return false;
+	} else if ( !$("input[name=file1]").val() && 
+			!$("input[name=file2]").val() && 
+			!$("input[name=file3]").val() &&
+			!$("input[name=file4]").val() &&
+			!$("input[name=file5]").val() ) {
+		alert('최소 1개 이상의 파일을 첨부하세요.');
+		return false;
+	}  
+}
 </script>
 <style>
 .btn-default, .btn-info { 
@@ -126,7 +172,7 @@ input[type="file"] {
 <hr>
 <div class="row">
 <div class="col-md-7">
-<form class="form-horizontal" action="/host/write" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="/host/write" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
 
 <!-- 장소 -->
 <div class="form-group">
