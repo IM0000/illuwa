@@ -148,7 +148,14 @@ function checkContent() {
 			<td class="text-center"><%= list.get(i).get("예약자이름") %></td>
 			<td class="text-center"><%= list.get(i).get("체크인") %></td>
 			<td class="text-center"><%= list.get(i).get("체크아웃") %></td>
-			<td class="text-center"><%= list.get(i).get("예약상태") %></td>
+			
+				<% if(  "W".equals(list.get(i).get("예약상태"))  ) {%>
+					<td class="text-center">대기중</td>
+				<% } else if(  "Y".equals(list.get(i).get("예약상태"))  ) { %>
+					<td class="text-center" style="color: green;">예약완료</td>
+				<% } else if(  "N".equals(list.get(i).get("예약상태"))  ) { %>
+					<td class="text-center" style="color: red;">예약거절</td>
+				<% } %>
 			<td class="text-center">
 				<a onclick="statusUpdate(
 				'<%= list.get(i).get("예약번호") %>'
@@ -196,9 +203,9 @@ function checkContent() {
 				<td>예약상태</td>
 				<td class="text-center">
 					<select class="form-control" name="bookingstatus" style="max-width: 100px; margin: 0 auto;">
-						<option value="대기중">대기</option>
-						<option value="예약완료">승인</option>
-						<option value="예약취소됨">거절</option>
+						<option value="W">대기</option>
+						<option value="Y">승인</option>
+						<option value="N">거절</option>
 					</select>
 				</td>
 			</tr>

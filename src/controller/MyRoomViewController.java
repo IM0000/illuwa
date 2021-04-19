@@ -36,9 +36,9 @@ public class MyRoomViewController extends HttpServlet {
 		//숙소 편의시설 정보 요청
 		List<String> roomFacList = myRoomService.getRoomFacList(room);
 		
-for(RoomImg r : roomImgList) {
-	System.out.println(r);
-}
+		for(RoomImg r : roomImgList) {
+			System.out.println(r);
+		}
 		req.setAttribute("roomView", roomView);
 		req.setAttribute("roomImgList", roomImgList);
 		req.setAttribute("roomFacList", roomFacList);
