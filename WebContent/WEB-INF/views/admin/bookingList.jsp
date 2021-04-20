@@ -14,8 +14,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	//거절버튼 (수정중 ...)
+	//거절버튼
 	$("#deleteBtn").click(function(){
+		if (confirm("정말로 삭제하시겠습니까?") == false) return false;
+
 		$("#statusForm").attr("action", "/admin/bookinglist")
 		$("#statusForm").submit();
 	})
