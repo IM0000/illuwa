@@ -53,9 +53,9 @@
 			<%if("W".equals( list.get(i).getRoomAdminCheck() ) ) { %>
 			<td class="text-center">대기중</td>
 			<% } else if("Y".equals( list.get(i).getRoomAdminCheck() ) ) { %>
-			<td class="text-center">승인완료</td>
+			<td class="text-center" style="color: green">승인완료</td>
 			<% } else if("N".equals( list.get(i).getRoomAdminCheck() ) ) { %>
-			<td class="text-center">거절됨</td>
+			<td class="text-center" style="color: red">거절됨</td>
 			<% } %>
 			<td class="text-center"><a id="deleteLink" href="/host/roomdelete?roomno=<%= list.get(i).getRoomNo()%>" onclick="confirm('등록한 숙소를 삭제하시겠습니까?')">삭제</a></td>
 		</tr>
