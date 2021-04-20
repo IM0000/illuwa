@@ -97,7 +97,7 @@ $(document).ready(function(){
 		                      </th>
 		                      <th>예약번호</th>
 		                      <th class="sorting_asc_disabled sorting_desc_disabled">회원번호</th>
-		                      <th class="sorting_asc_disabled sorting_desc_disabled">숙소명</th>
+		                      <th class="sorting_asc_disabled sorting_desc_disabled" style="width:550px;">숙소명</th>
 		                      <th class="sorting_asc_disabled sorting_desc_disabled">체크인</th>
 		                      <th class="sorting_asc_disabled sorting_desc_disabled">체크아웃</th>
 		                      <th>예약상태</th>
