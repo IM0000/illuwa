@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.MailAuth;
+import util.BookingMailAuth;
 
 @WebServlet("/booking/mail")
 public class BookingMailController extends HttpServlet {
@@ -46,7 +46,7 @@ public class BookingMailController extends HttpServlet {
 		final String BODY = String.join(req.getParameter("content")); //  <<------------------------------수정하세요
 
 		// 인증 객체
-		Authenticator auth = new MailAuth("mailiddlqslek", "qciizboevulkjyms"); //  <<------------------------------수정하세요
+		Authenticator auth = new BookingMailAuth("mailiddlqslek", "qciizboevulkjyms"); //  <<------------------------------수정하세요
 
 
 

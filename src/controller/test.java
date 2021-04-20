@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.MailAuth;
+import util.BookingMailAuth;
 
 @WebServlet("/test")
 public class test extends HttpServlet {
@@ -53,7 +53,7 @@ public class test extends HttpServlet {
 		  "<p>javax.mail을 이용한 구글 smtp 이메일 전송 테스트</p>" ,req.getParameter("content")); //  <<------------------------------수정하세요
 		  
 		  // 인증 객체
-		Authenticator auth = new MailAuth("mailiddlqslek", "qciizboevulkjyms"); //  <<------------------------------수정하세요
+		Authenticator auth = new BookingMailAuth("mailiddlqslek", "qciizboevulkjyms"); //  <<------------------------------수정하세요
 		  
 		  
 		 

@@ -32,8 +32,8 @@ public class HostRegisterController extends HttpServlet {
 		System.out.println("[TEST] readonly 도로명 주소 : " + req.getParameter("roadAddress"));
 		
 		//==== [test]세션에 유저번호 저장 ====
-		HttpSession session = req.getSession();
-		session.setAttribute("userno", 1001);
+//		HttpSession session = req.getSession();
+//		session.setAttribute("userno", 1001);
 		//=============================
 		//폼데이터 등록 요청
 		int roomNo = hostService.registerForm(req);

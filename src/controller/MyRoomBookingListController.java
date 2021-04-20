@@ -27,10 +27,10 @@ public class MyRoomBookingListController extends HttpServlet {
 		System.out.println("[TEST] MyRoomBookingListController [GET] 요청");
 		
 		//==== [test]세션에 유저번호 저장 ====
-		HttpSession session = req.getSession();
-		session.setAttribute("userno", 1001);
+//		HttpSession session = req.getSession();
+//		session.setAttribute("userno", 1001);
 		//=============================
-		
+		HttpSession session = req.getSession();
 		//요청파라미터를 전달하여 Paging객체 생성하기
 		BookingPaging paging = myRoomBookingService.getPaging(req);
 		System.out.println("BookingListController - " + paging );

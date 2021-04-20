@@ -118,8 +118,12 @@ $(document).ready(function() {
 	<div class="indicator-innerLeft">
 		<h3>숙소 상세보기</h3>
 	</div>
-	<button id="btnDelete" class="btn btn-default indicator-innerRight">삭제하기</button>
-	<button id="btnUpdate" class="btn btn-default indicator-innerRight">수정하기</button>
+	<% if( request.getSession().getAttribute("login") !=null ){ %>
+		<% if( (Integer)request.getSession().getAttribute("userno") == roomView.getUserNo() ){ %>
+			<button id="btnDelete" class="btn btn-default indicator-innerRight">삭제하기</button>
+			<button id="btnUpdate" class="btn btn-default indicator-innerRight">수정하기</button>
+		<% } %>
+	<%} %>
 </div>
 <!-- 관리자 승인 여부  -->
 <div class="adminCheck">

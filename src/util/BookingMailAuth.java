@@ -3,7 +3,7 @@ package util;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
-public class MailAuth extends Authenticator {
+public class BookingMailAuth extends Authenticator {
 
 	// 구글 SMTP ID
 	private String smtp_username = "기본계정";
@@ -14,7 +14,7 @@ public class MailAuth extends Authenticator {
 	// 인증 객체
 	private PasswordAuthentication pa;
 	
-	public MailAuth(String smtp_username, String smtp_password) {
+	public BookingMailAuth(String smtp_username, String smtp_password) {
 		this.smtp_username = smtp_username;
 		this.smtp_password = smtp_password;
 		

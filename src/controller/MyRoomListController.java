@@ -24,8 +24,8 @@ public class MyRoomListController extends HttpServlet {
 		System.out.println("[test] MyRoomListController [GET] 요청");
 		
 		//==== [test]세션에 유저번호 저장 ====
-		HttpSession session = req.getSession();
-		session.setAttribute("userno", 1001);
+//		HttpSession session = req.getSession();
+//		session.setAttribute("userno", 1001);
 		//=============================
 		
 		//본인의 숙소 리스트 가져오기
