@@ -13,7 +13,7 @@ public class Room {
 	private String roomRoadAddress; //숙소 도로명주소
 	private String roomDetailedAddress; //숙소 상세주소
 	private String roomDesc; //숙소에 대한 설명
-	private String roomAdminCheck; //숙소에 대한 관리자 승인 여부 (Y/N)
+	private String roomAdminCheck; //숙소에 대한 관리자 승인 여부 (Y/N/W)
 	
 	
 	

@@ -191,7 +191,7 @@ function checkContent() {
 				<td>이메일</td><td id="email"></td>
 			</tr>
 			<tr>
-				<td>전달메시지</td><td id="message"></td>
+				<td>예약자의 전달메시지</td><td id="message"></td>
 			</tr>
 			<tr>
 				<td>체크인</td><td id="checkin"></td>
