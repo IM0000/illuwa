@@ -26,5 +26,10 @@ public interface AdminRoomService {
 	 * @param req
 	 */
 	public void refuse(HttpServletRequest req);
+	/**
+	 * 선택한 숙소 삭제하기
+	 * @param req
+	 */
+	public void delete(HttpServletRequest req);
 
 }

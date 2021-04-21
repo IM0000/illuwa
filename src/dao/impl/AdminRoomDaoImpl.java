@@ -99,4 +99,24 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
 		return result;
 	
 	}
+	
+	@Override
+	public int updateDelete(Connection conn, Room deleteRoom) {
+		String sql = "DELETE room WHERE room_no = ?";
+		int result = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, deleteRoom.getRoomNo());
+			
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return result;
+	}
 }

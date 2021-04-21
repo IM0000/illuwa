@@ -23,12 +23,37 @@ $(document).ready(function(){
 		$("#statusForm").attr("action", "/admin/room/refuse")
 		$("#statusForm").submit();
 	})
+	//삭제버튼
+	$("#deleteBtn").click(function(){
+		if( !confirm("정말로 삭제하시겠습니까?") ){
+			return false;
+		}
+		$("#statusForm").attr("action", "/admin/room/delete")
+		$("#statusForm").submit();
+	})
 	//체크박스 전체선택/해제
 	$("#chkAll").click(function(){
 		if( $("#chkAll").prop("checked") ){
 			$("input[name=chk]").prop("checked", true);
 		} else {
 			$("input[name=chk]").prop("checked", false);
+		}
+	})
+	//체크가 되었을 때 버튼 활성화
+	$("input[type=checkbox]").click(function(){
+		var tmp = null;
+		$("input[name=chk]").each(function (index, item){
+			if( $(item).prop('checked') ){
+				tmp = true;
+				return false;
+			}
+		})
+		
+		var cnt = $("input[name=chk]:checked").length;
+		if(tmp==true || cnt>0){
+		    $(".btn").prop("disabled",false);
+		} else {
+		    $(".btn").prop("disabled",true);
 		}
 	})
 })
@@ -134,8 +159,10 @@ $(document).ready(function(){
 		              </form>
 		              <!-- /.card-body -->
 		              <div class="card-footer">
-		                  <button type="button" id="approveBtn" class="btn btn-info">승인</button>
-		                  <button type="button" id="refuseBtn" class="btn btn-danger">거절</button>
+		                  <button type="button" id="approveBtn" class="btn btn-info" disabled="disabled">승인</button>
+		                  <button type="button" id="refuseBtn" class="btn btn-danger" disabled="disabled">거절</button>
+		                  <button type="button" id="deleteBtn" class="btn btn-danger" style="float:right;" disabled="disabled">숙소 삭제하기</button>
+		                  
 	                  </div>
 		            </div>
      			</div>

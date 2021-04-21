@@ -29,6 +29,24 @@ $(document).ready(function(){
 			$("input[name=chk]").prop("checked", false);
 		}
 	})
+	
+	//체크가 되었을 때 버튼 활성화
+	$("input[type=checkbox]").click(function(){
+		var tmp = null;
+		$("input[name=chk]").each(function (index, item){
+			if( $(item).prop('checked') ){
+				tmp = true;
+				return false;
+			}
+		})
+		
+		var cnt = $("input[name=chk]:checked").length;
+		if(tmp==true || cnt>0){
+		    $(".btn").prop("disabled",false);
+		} else {
+		    $(".btn").prop("disabled",true);
+		}
+	})
 })
 </script>
 
@@ -133,7 +151,7 @@ $(document).ready(function(){
 		              </form>
 		              <!-- /.card-body -->
 		              <div class="card-footer">
-		                  <button type="button" id="deleteBtn" class="btn btn-danger">삭제</button>
+		                  <button type="button" id="deleteBtn" class="btn btn-danger" disabled="disabled">삭제</button>
 	                  </div>
 		            </div>
      			</div>

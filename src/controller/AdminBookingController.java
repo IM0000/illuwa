@@ -31,7 +31,10 @@ public class AdminBookingController extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		if( req.getParameterValues("chk") == null ) {
+			resp.sendRedirect("/admin/bookinglist");
+			return;
+		}
 		adminBookingService.delete(req);
 		
 		resp.sendRedirect("/admin/bookinglist");

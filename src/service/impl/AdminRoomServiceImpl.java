@@ -69,4 +69,27 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 			}
 		}
 	}
+	
+	@Override
+	public void delete(HttpServletRequest req) {
+		String[] roomnoArr = req.getParameterValues("chk");
+		List<Room> list = new ArrayList<>();
+		Room room = null;
+		for(String s : roomnoArr) {
+			room = new Room();
+			room.setRoomNo(Integer.parseInt(s));
+			list.add(room);
+		}
+		
+		for(Room deleteRoom : list) {
+			int result = adminRoomDao.updateDelete(conn, deleteRoom);
+			
+			if(result == 1) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		}
+		
+	}
 }

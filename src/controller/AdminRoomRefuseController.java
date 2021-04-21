@@ -20,7 +20,10 @@ public class AdminRoomRefuseController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("[test] AdminRoomRefuseController [post] 호출");
-		
+		if( req.getParameterValues("chk") == null ) {
+			resp.sendRedirect("/admin/roomlist");
+			return;
+		}
 		adminRoomService.refuse(req);
 		
 		resp.sendRedirect("/admin/roomlist");

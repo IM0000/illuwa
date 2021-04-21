@@ -27,5 +27,12 @@ public interface AdminRoomDao {
 	 * @return DB 수행 결과 반환
 	 */
 	public int updateRefuse(Connection conn, Room updateRoom);
+	/**
+	 * 숙소 삭제하기
+	 * @param conn
+	 * @param deleteRoom
+	 * @return DB 수행 결과 반환
+	 */
+	public int updateDelete(Connection conn, Room deleteRoom);
 
 }
