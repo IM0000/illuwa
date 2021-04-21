@@ -20,16 +20,16 @@ public class MyRoomBookingDaoImpl implements MyRoomBookingDao {
 	ResultSet rs = null;
 	
 	@Override
-	public int selectCntAll(Connection conn, int hostNo) {
+	public int selectCntByRoomno(Connection conn, int roomno) {
 		String sql = "SELECT count(*) cnt FROM booking"
-				+ " WHERE host_no = ?";
+				+ " WHERE room_no = ?";
 		
 		//호스트의 총 예약 수
 		int cnt = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, hostNo);
+			ps.setInt(1, roomno);
 			
 			rs = ps.executeQuery();
 			if(rs.next()) {
@@ -50,22 +50,21 @@ public class MyRoomBookingDaoImpl implements MyRoomBookingDao {
 	@Override
 	public List<Map<String, Object>> selectByPaging(Connection conn, int hostNo, BookingPaging paging) {
 		String sql = "SELECT * FROM (" 
-					+" SELECT rownum rnum, B.* FROM(" 
+					+" SELECT rownum rnum, BB.* FROM(" 
 					+" 	SELECT"
-					+" 		b.booking_no 예약번호"
-					+" 		, r.room_name 숙소명"
-					+" 		, b.booking_username 예약자이름"
-					+" 		, b.booking_userphone 예약자연락처"
-					+" 		, b.booking_checkin 체크인"
-					+" 		, b.booking_checkout 체크아웃"
-					+" 		, b.booking_message 예약자메시지"
-					+" 		, b.booking_status 예약상태"
-					+" 		, b.booking_useremail 예약자이메일"
-					+" 	FROM booking b, room r"
-					+"	WHERE host_no = ? AND b.room_no = r.room_no" 
-					+" 	ORDER BY b.booking_checkin DESC) B"
-					+" ) BOOK"
-					+" WHERE rnum between ? and ?";
+					+" 		B.booking_no 예약번호"
+					+" 		, R.room_name 숙소명"
+					+" 		, B.booking_username 예약자이름"
+					+" 		, B.booking_userphone 예약자연락처"
+					+" 		, B.booking_checkin 체크인"
+					+" 		, B.booking_checkout 체크아웃"
+					+" 		, B.booking_message 예약자메시지"
+					+" 		, B.booking_status 예약상태"
+					+" 		, B.booking_useremail 예약자이메일"
+					+" 	FROM ROOM R, BOOKING B"
+					+"	WHERE R.ROOM_NO = B.ROOM_NO AND R.USER_NO = ?" 
+					+" 	ORDER BY B.booking_checkin DESC) BB"
+					+" ) WHERE rnum between ? and ?";
 		
 		//정보를 담을 Map
 		Map<String, Object> map = null;
@@ -129,22 +128,43 @@ public class MyRoomBookingDaoImpl implements MyRoomBookingDao {
 	}
 	
 	@Override
-	public int deleteBooking(Connection conn, Room room) {
-		String sql = "DELETE booking WHERE booking_no = ?";
+	public List<Integer> selectRoomnoByUserno(Connection conn, int hostNo) {
+		String sql = "SELECT room_no FROM room WHERE USER_NO = ?";
 		
-		int result = -1;
-		
+		List<Integer> list = new ArrayList<>();
+		int roomno = -1;
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, room.getRoomNo());
+			ps.setInt(1, hostNo);
 			
-			result = ps.executeUpdate();
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				roomno = rs.getInt("room_no");
+				
+				list.add(roomno);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		return result;
+		
+		
+		return list;
 	}
+	/* 없어도될듯
+	 * @Override public int deleteBooking(Connection conn, Room room) { String sql =
+	 * "DELETE booking WHERE booking_no = ?";
+	 * 
+	 * int result = -1;
+	 * 
+	 * try { ps = conn.prepareStatement(sql);
+	 * 
+	 * ps.setInt(1, room.getRoomNo());
+	 * 
+	 * result = ps.executeUpdate(); } catch (SQLException e) { e.printStackTrace();
+	 * } finally { JDBCTemplate.close(ps); } return result; }
+	 */
 }

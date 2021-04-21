@@ -109,15 +109,15 @@ public class MyRoomServiceImpl implements MyRoomService {
 		//숙소 이미지 정보 임시저장
 		List<RoomImg> list = myRoomDao.selectRoomImg(conn, room);
 		
-		//편의시설, 이미지, 북마크(같이 지워야함), 예약
+		//편의시설, 이미지, [북마크(같이 지워야함), 예약, 리뷰] => db에서 테이블 생성할 때 on delete cascade 넣어주면 될듯?
 //		int bookmarkRes =
-		int bookingRes = myRoomBookingDao.deleteBooking(conn, room);
+//		int bookingRes = myRoomBookingDao.deleteBooking(conn, room);
 		int imgRes = myRoomDao.deleteRoomImg(conn, room);
 		int facRes = myRoomDao.deleteRoomFac(conn, room);
 		int roomRes = myRoomDao.deleteRoom(conn, room);
 		
 		//서버에 저장된 이미지파일 삭제
-		if(roomRes == 1 && imgRes >= 0 && facRes >= 0 && bookingRes >= 0) {
+		if(roomRes == 1 && imgRes >= 0 && facRes >= 0 ) {
 			for(RoomImg r : list) {
 				if(r != null) {
 					File file = new File(req.getServletContext().getRealPath("upload")+"\\"+r.getRoomImgFilename()); 
@@ -137,7 +137,7 @@ public class MyRoomServiceImpl implements MyRoomService {
 		System.out.println("imgRes : " +imgRes);
 		System.out.println("facRes : " +facRes);
 		//DB 트랜잭션 처리
-		if(roomRes == 1 && imgRes >= 0 && facRes >= 0 && bookingRes >= 0) {
+		if(roomRes == 1 && imgRes >= 0 && facRes >= 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);

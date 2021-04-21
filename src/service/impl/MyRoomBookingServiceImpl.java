@@ -1,6 +1,7 @@
 package service.impl;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +32,15 @@ public class MyRoomBookingServiceImpl implements MyRoomBookingService {
 			curPage = Integer.parseInt(param);
 		}
 		
+		//호스트번호로 호스트가 가진 숙소번호 리스트 얻기
+		List<Integer> roomno = new ArrayList<>();
+		roomno = myRoomBookingDao.selectRoomnoByUserno(conn, hostNo);
+		
 		//호스트의 예약 테이블의 총 갯수를 조회한다.
-		int totalCount = myRoomBookingDao.selectCntAll(conn, hostNo);
+		int totalCount = 0;
+		for(int n : roomno) {
+			totalCount += myRoomBookingDao.selectCntByRoomno(conn, n);
+		}
 		
 		//Paging 객체 생성
 		BookingPaging paging = new BookingPaging(totalCount, curPage);

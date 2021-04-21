@@ -50,6 +50,12 @@ $(document).ready(function() {
 		}
 	})
 });
+//input 입력값 제한
+function numberMaxLength(e){
+    if(e.value.length > e.maxLength){
+        e.value = e.value.slice(0, e.maxLength);
+    }
+}
 //파일 삭제시  미리보기 초기화
 function fileReset(input, preview) {
 	var agent = navigator.userAgent.toLowerCase();
@@ -222,25 +228,29 @@ input[type="file"] {
 <div class="form-group">
 	<label class="col-sm-3 control-label" for="roomGuests">최대숙박인원</label>
 	<div class="col-sm-9">
-	<input class="form-control" type="number" name="roomGuests" id="roomGuests" min="0"/>
+	<input class="form-control" type="number" name="roomGuests"
+	 id="roomGuests" min="0" maxlength="3" oninput="numberMaxLength(this);"/>
 	</div>
 </div>
 <div class="form-group">
 	<label class="col-sm-3 control-label" for="roomBedroom">침실 수</label>
 	<div class="col-sm-9">
-	<input class="form-control" type="number" name="roomBedroom" id="roomBedroom" min="0"/>
+	<input class="form-control" type="number" name="roomBedroom"
+	 id="roomBedroom" min="0" maxlength="3" oninput="numberMaxLength(this);"/>
 	</div>
 </div>
 <div class="form-group">
 	<label class="col-sm-3 control-label" for="roomBed">침대/침구류 수</label>
 	<div class="col-sm-9">
-	<input class="form-control" type="number" name="roomBed" id="roomBed" min="0"/>
+	<input class="form-control" type="number" name="roomBed"
+	 id="roomBed" min="0" maxlength="3" oninput="numberMaxLength(this);"/>
 	</div>
 </div>
 <div class="form-group">
 	<label class="col-sm-3 control-label" for="roomBathroom">욕실 수</label>
 	<div class="col-sm-9">
-	<input class="form-control" type="number" name="roomBathroom" id="roomBathroom" min="0"/>
+	<input class="form-control" type="number" name="roomBathroom"
+	 id="roomBathroom" min="0" maxlength="3" oninput="numberMaxLength(this);"/>
 	</div>
 </div>
 <div class="form-group">

@@ -1,24 +1,16 @@
 package dto;
 
 public class User {
-	private int userNo; 
-	private String userId;
-	private String userPw;
-	private String userName;
-	private String userGender;
-	private String userNick;
-	private String userBithdate;
-	private String userEmail;
-	private String userPhone;
-	private int userGrade;
-	
-	
-	@Override
-	public String toString() {
-		return "User [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
-				+ ", userGender=" + userGender + ", userNick=" + userNick + ", userBithdate=" + userBithdate
-				+ ", userEmail=" + userEmail + ", userPhone=" + userPhone + ", userGrade=" + userGrade + "]";
-	}
+	 private int userNo; 
+	 private String userId;
+	 private String userPw;
+	 private String userName;
+	 private String userGender;
+	 private String userNick;
+	 private String userBithdate;
+	 private String userEmail;
+	 private String userPhone;
+	 private int userGrade;
 	public int getUserNo() {
 		return userNo;
 	}
@@ -79,6 +71,12 @@ public class User {
 	public void setUserGrade(int userGrade) {
 		this.userGrade = userGrade;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Users [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
+				+ ", userGender=" + userGender + ", userNick=" + userNick + ", userBithdate=" + userBithdate
+				+ ", userEmail=" + userEmail + ", userPhone=" + userPhone + ", userGrade=" + userGrade + "]";
+	}  
+	 
+	 
 }

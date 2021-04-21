@@ -9,12 +9,12 @@ import util.BookingPaging;
 
 public interface MyRoomBookingDao {
 	/**
-	 * 호스트의 예약 갯수를 조회
+	 * 숙소번호에 해당하는 예약 수를 조회
 	 * @param conn
-	 * @param hostNo - 접속한 호스트의 회원번호
-	 * @return 예약 갯수
+	 * @param roono - 숙소번호
+	 * @return 예약 수
 	 */
-	public int selectCntAll(Connection conn, int hostNo);
+	public int selectCntByRoomno(Connection conn, int roomno);
 	/**
 	 * 호스트의 예약을 전체조회 (페이징처리)
 	 * @param conn 
@@ -31,6 +31,13 @@ public interface MyRoomBookingDao {
 	 * @return 예약 수정 결과
 	 */
 	public int updateStatus(Connection conn, int bookingno, String bookingStatus);
+	/**
+	 * 유저가 가진 숙소번호 전체 조회
+	 * @param conn
+	 * @param hostNo - 회원번호(호스트)
+	 * @return 숙소번호 리스트 반환
+	 */
+	public List<Integer> selectRoomnoByUserno(Connection conn, int hostNo);
 	
 	/**
 	 * 해당 숙소번호의 예약들을 삭제
@@ -38,6 +45,7 @@ public interface MyRoomBookingDao {
 	 * @param room - 해당 숙소 번호
 	 * @return 삭제결과 반환
 	 */
-	public int deleteBooking(Connection conn, Room room);
+	//없어도될듯?
+	//public int deleteBooking(Connection conn, Room room);
 
 }
