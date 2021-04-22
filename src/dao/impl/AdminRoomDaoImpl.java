@@ -31,19 +31,19 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
  			while(rs.next()) {
  				room = new Room();
  				
- 				room.setRoomNo(rs.getInt("room_no"));
-				room.setUserNo(rs.getInt("user_no"));
-				room.setRoomName(rs.getString("room_name"));
-				room.setRoomGuests(rs.getInt("room_guests"));
-				room.setRoomPrice(rs.getInt("room_price"));
-				room.setRoomBedroom(rs.getInt("room_bedroom"));
-				room.setRoomBed(rs.getInt("room_bed"));
-				room.setRoomAdminCheck(rs.getString("room_admin_check"));
-				room.setRoomDesc(rs.getString("room_desc"));
-				room.setRoomBathroom(rs.getInt("room_bathroom"));
-				room.setRoomType(rs.getString("room_type"));
-				room.setRoomRoadAddress(rs.getString("room_road_address"));
-				room.setRoomDetailedAddress(rs.getString("room_detailed_address"));
+ 				room.setRoomNo(rs.getInt("roomNo"));
+				room.setUserNo(rs.getInt("userNo"));
+				room.setRoomName(rs.getString("roomName"));
+				room.setRoomGuests(rs.getInt("roomGuests"));
+				room.setRoomPrice(rs.getInt("roomPrice"));
+				room.setRoomBedroom(rs.getInt("roomBedroom"));
+				room.setRoomBed(rs.getInt("roomBed"));
+				room.setRoomAdminCheck(rs.getString("roomAdminCheck"));
+				room.setRoomDesc(rs.getString("roomDesc"));
+				room.setRoomBathroom(rs.getInt("roomBathroom"));
+				room.setRoomType(rs.getString("roomType"));
+				room.setRoomRoadAddress(rs.getString("roomRoadAddress"));
+				room.setRoomDetailedAddress(rs.getString("roomDetailedAddress"));
  				
  				list.add(room);
  			}
@@ -61,7 +61,7 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
 	
 	@Override
 	public int updateApprove(Connection conn, Room updateRoom) {
-		String sql = "UPDATE room SET room_admin_check = 'Y' WHERE room_no = ?";
+		String sql = "UPDATE room SET roomAdminCheck = 'Y' WHERE roomNo = ?";
 		int result = -1;
 		
 		try {
@@ -81,7 +81,7 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
 	
 	@Override
 	public int updateRefuse(Connection conn, Room updateRoom) {
-		String sql = "UPDATE room SET room_admin_check = 'N' WHERE room_no = ?";
+		String sql = "UPDATE room SET roomAdminCheck = 'N' WHERE roomNo = ?";
 		int result = -1;
 		
 		try {
@@ -102,7 +102,7 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
 	
 	@Override
 	public int updateDelete(Connection conn, Room deleteRoom) {
-		String sql = "DELETE room WHERE room_no = ?";
+		String sql = "DELETE room WHERE roomNo = ?";
 		int result = -1;
 		
 		try {
@@ -122,7 +122,7 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
 	
 	@Override
 	public int selectUsernoByRoomno(Connection conn, Room updateRoom) {
-		String sql = "SELECT user_no FROM room WHERE room_no = ?";
+		String sql = "SELECT user_no FROM room WHERE roomNo = ?";
 		int userno = -1;
 		
 		try {

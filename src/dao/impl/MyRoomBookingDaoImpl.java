@@ -53,7 +53,7 @@ public class MyRoomBookingDaoImpl implements MyRoomBookingDao {
 					+" SELECT rownum rnum, BB.* FROM(" 
 					+" 	SELECT"
 					+" 		B.booking_no 예약번호"
-					+" 		, R.room_name 숙소명"
+					+" 		, R.roomName 숙소명"
 					+" 		, B.booking_username 예약자이름"
 					+" 		, B.booking_userphone 예약자연락처"
 					+" 		, B.booking_checkin 체크인"
@@ -129,7 +129,7 @@ public class MyRoomBookingDaoImpl implements MyRoomBookingDao {
 	
 	@Override
 	public List<Integer> selectRoomnoByUserno(Connection conn, int hostNo) {
-		String sql = "SELECT room_no FROM room WHERE USER_NO = ?";
+		String sql = "SELECT roomNo FROM room WHERE USER_NO = ?";
 		
 		List<Integer> list = new ArrayList<>();
 		int roomno = -1;
@@ -140,7 +140,7 @@ public class MyRoomBookingDaoImpl implements MyRoomBookingDao {
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				roomno = rs.getInt("room_no");
+				roomno = rs.getInt("roomNo");
 				
 				list.add(roomno);
 			}

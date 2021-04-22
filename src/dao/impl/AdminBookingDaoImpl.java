@@ -22,7 +22,7 @@ public class AdminBookingDaoImpl implements AdminBookingDao {
 		String sql = "SELECT "
 				+ "		b.booking_no 예약번호"
 				+ "		, b.user_no 회원번호"
-				+ "		, r.room_name 숙소명"
+				+ "		, r.roomName 숙소명"
 				+ "		, b.booking_checkin 체크인"
 				+ "		, b.booking_checkout 체크아웃"
 				+ "		, b.booking_status 예약상태"

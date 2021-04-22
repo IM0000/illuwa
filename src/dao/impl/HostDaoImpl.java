@@ -38,9 +38,9 @@ public class HostDaoImpl implements HostDao {
 	@Override
 	public int insertRoom(Connection conn, Room room) {
 		System.out.println("[TEST] HostDaoImpl - insertRoom() 호출");
-		String sql = "INSERT INTO room(room_no, user_no, room_name, room_guests, room_price,"
-				+ " room_bedroom, room_bed, room_admin_check, room_desc, room_bathroom, room_type,"
-				+ " room_road_address, room_detailed_address)"
+		String sql = "INSERT INTO room(roomNo, userNo, roomName, roomGuests, roomPrice,"
+				+ " roomBedroom, roomBed, roomAdminCheck, roomDesc, roomBathroom, roomType,"
+				+ " roomRoadAddress, roomDetailedAddress)"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,? ,?)";
 		int res = -1;
 		

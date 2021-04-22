@@ -20,7 +20,7 @@ public class MyRoomDaoImpl implements MyRoomDao {
 	ResultSet rs = null;
 	@Override
 	public List<Room> selectAll(Connection conn, User user) {
-		String sql = "SELECT * FROM room WHERE user_no = ?";
+		String sql = "SELECT * FROM room WHERE userNo = ?";
 		List<Room> myRoomList = new ArrayList<>();
 		Room room = null;
 		
@@ -32,19 +32,19 @@ public class MyRoomDaoImpl implements MyRoomDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				room = new Room();
-				room.setRoomNo(rs.getInt("room_no"));
-				room.setUserNo(rs.getInt("user_no"));
-				room.setRoomName(rs.getString("room_name"));
-				room.setRoomGuests(rs.getInt("room_guests"));
-				room.setRoomPrice(rs.getInt("room_price"));
-				room.setRoomBedroom(rs.getInt("room_bedroom"));
-				room.setRoomBed(rs.getInt("room_bed"));
-				room.setRoomAdminCheck(rs.getString("room_admin_check"));
-				room.setRoomDesc(rs.getString("room_desc"));
-				room.setRoomBathroom(rs.getInt("room_bathroom"));
-				room.setRoomType(rs.getString("room_type"));
-				room.setRoomRoadAddress(rs.getString("room_road_address"));
-				room.setRoomDetailedAddress(rs.getString("room_detailed_address"));
+				room.setRoomNo(rs.getInt("roomNo"));
+				room.setUserNo(rs.getInt("userNo"));
+				room.setRoomName(rs.getString("roomName"));
+				room.setRoomGuests(rs.getInt("roomGuests"));
+				room.setRoomPrice(rs.getInt("roomPrice"));
+				room.setRoomBedroom(rs.getInt("roomBedroom"));
+				room.setRoomBed(rs.getInt("roomBed"));
+				room.setRoomAdminCheck(rs.getString("roomAdminCheck"));
+				room.setRoomDesc(rs.getString("roomDesc"));
+				room.setRoomBathroom(rs.getInt("roomBathroom"));
+				room.setRoomType(rs.getString("roomType"));
+				room.setRoomRoadAddress(rs.getString("roomRoadAddress"));
+				room.setRoomDetailedAddress(rs.getString("roomDetailedAddress"));
 				
 				myRoomList.add(room);
 			}
@@ -60,7 +60,7 @@ public class MyRoomDaoImpl implements MyRoomDao {
 	
 	@Override
 	public Room selectRoom(Connection conn, Room room) {
-		String sql = "SELECT * FROM room WHERE room_no = ?";
+		String sql = "SELECT * FROM room WHERE roomNo = ?";
 		Room roomView = null;
 		
 		try {
@@ -70,19 +70,19 @@ public class MyRoomDaoImpl implements MyRoomDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				roomView = new Room();
-				roomView.setRoomNo(rs.getInt("room_no"));
-				roomView.setUserNo(rs.getInt("user_no"));
-				roomView.setRoomName(rs.getString("room_name"));
-				roomView.setRoomGuests(rs.getInt("room_guests"));
-				roomView.setRoomPrice(rs.getInt("room_price"));
-				roomView.setRoomBedroom(rs.getInt("room_bedroom"));
-				roomView.setRoomBed(rs.getInt("room_bed"));
-				roomView.setRoomAdminCheck(rs.getString("room_admin_check"));
-				roomView.setRoomDesc(rs.getString("room_desc"));
-				roomView.setRoomBathroom(rs.getInt("room_bathroom"));
-				roomView.setRoomType(rs.getString("room_type"));
-				roomView.setRoomRoadAddress(rs.getString("room_road_address"));
-				roomView.setRoomDetailedAddress(rs.getString("room_detailed_address"));
+				roomView.setRoomNo(rs.getInt("roomNo"));
+				roomView.setUserNo(rs.getInt("userNo"));
+				roomView.setRoomName(rs.getString("roomName"));
+				roomView.setRoomGuests(rs.getInt("roomGuests"));
+				roomView.setRoomPrice(rs.getInt("roomPrice"));
+				roomView.setRoomBedroom(rs.getInt("roomBedroom"));
+				roomView.setRoomBed(rs.getInt("roomBed"));
+				roomView.setRoomAdminCheck(rs.getString("roomAdminCheck"));
+				roomView.setRoomDesc(rs.getString("roomDesc"));
+				roomView.setRoomBathroom(rs.getInt("roomBathroom"));
+				roomView.setRoomType(rs.getString("roomType"));
+				roomView.setRoomRoadAddress(rs.getString("roomRoadAddress"));
+				roomView.setRoomDetailedAddress(rs.getString("roomDetailedAddress"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -152,7 +152,7 @@ public class MyRoomDaoImpl implements MyRoomDao {
 	
 	@Override
 	public int deleteRoom(Connection conn, Room room) {
-		String sql = "DELETE room WHERE room_no = ?";
+		String sql = "DELETE room WHERE roomNo = ?";
 		int result = -1;
 		
 		try {
@@ -213,10 +213,10 @@ public class MyRoomDaoImpl implements MyRoomDao {
 	
 	@Override
 	public int updateRoom(Connection conn, Room room) {
-		String sql = "UPDATE room SET room_name = ?, room_guests = ?, room_price = ?, room_bedroom = ?"
-				+ ", room_bed = ?, room_desc = ?, room_bathroom = ?, room_type = ?"
-				+ ", room_road_address = ?, room_detailed_address = ?"
-				+ " WHERE room_no = ?";
+		String sql = "UPDATE room SET roomName = ?, roomGuests = ?, roomPrice = ?, roomBedroom = ?"
+				+ ", roomBed = ?, roomDesc = ?, roomBathroom = ?, roomType = ?"
+				+ ", roomRoadAddress = ?, roomDetailedAddress = ?"
+				+ " WHERE roomNo = ?";
 		int result = -1;
 		
 		try {
