@@ -62,17 +62,18 @@ public class MyRoomViewController extends HttpServlet {
 			return;
 		}
 		//다른 호스트가 접근했을 경우
-		if( (Integer)session.getAttribute("userno") != roomView.getUserNo()) {
-			resp.setContentType("text/html; charset=UTF-8");
-			PrintWriter script = resp.getWriter();
-			script.println("<script>");
-			script.println("alert('잘못된 접근입니다.')");
-			script.println("location.href='/main'");
-			script.println("</script>");
-			script.close();
-			return;
+		if( (Integer)session.getAttribute("usergrade") != 0 ) {
+			if( (Integer)session.getAttribute("userno") != roomView.getUserNo()) {
+				resp.setContentType("text/html; charset=UTF-8");
+				PrintWriter script = resp.getWriter();
+				script.println("<script>");
+				script.println("alert('잘못된 접근입니다.')");
+				script.println("location.href='/main'");
+				script.println("</script>");
+				script.close();
+				return;
+			}
 		}
-		
 		//숙소 이미지 정보 요청
 		List<RoomImg> roomImgList = myRoomService.getRoomImgList(room);
 		
