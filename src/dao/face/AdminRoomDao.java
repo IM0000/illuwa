@@ -34,5 +34,19 @@ public interface AdminRoomDao {
 	 * @return DB 수행 결과 반환
 	 */
 	public int updateDelete(Connection conn, Room deleteRoom);
+	/**
+	 * 숙소주인의 회원번호 조회
+	 * @param conn
+	 * @param updateRoom - 숙소번호
+	 * @return 회원번호 반환
+	 */
+	public int selectUsernoByRoomno(Connection conn, Room updateRoom);
+	/**
+	 * 숙소 승인시 회원의 회원등급 변경
+	 * @param conn
+	 * @param userno - 회원번호
+	 * @return DB 수행 결과 반환
+	 */
+	public int updateUserGrade(Connection conn, int userno);
 
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +28,29 @@ public class MyRoomBookingListController extends HttpServlet {
 		System.out.println("[TEST] MyRoomBookingListController [GET] 요청");
 		
 		//==== [test]세션에 유저번호 저장 ====
-		HttpSession session = req.getSession();
-		session.setAttribute("userno", 1001);
-		//=============================
 //		HttpSession session = req.getSession();
+//		session.setAttribute("userno", 1001);
+		//=============================
+		HttpSession session = req.getSession();
+		if( session.getAttribute("login") == null ) {
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter script = resp.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인 후 이용해주세요')");
+			script.println("location.href='/main'");
+			script.println("</script>");
+			script.close();
+			return;
+		} else if ( (Integer)session.getAttribute("usergrade") != 2) {
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter script = resp.getWriter();
+			script.println("<script>");
+			script.println("alert('호스트 신청 후 이용해주세요')");
+			script.println("location.href='/main'");
+			script.println("</script>");
+			script.close();
+			return;
+		}
 		//요청파라미터를 전달하여 Paging객체 생성하기
 		BookingPaging paging = myRoomBookingService.getPaging(req);
 		System.out.println("BookingListController - " + paging );

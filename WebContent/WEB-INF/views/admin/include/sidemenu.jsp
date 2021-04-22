@@ -65,7 +65,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/restaurantlist" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>추천맛집 등록/수정/삭제</p>
                 </a>
@@ -82,7 +82,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/review/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 조회/삭제</p>
                 </a>
@@ -99,13 +99,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/notice/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>공지 조회/등록/삭제</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/board/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>자유게시판 조회/삭제</p>
                 </a>

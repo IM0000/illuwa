@@ -37,9 +37,13 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 		}
 		
 		for(Room updateRoom : list) {
+			//숙소 승인하기
 			int result = adminRoomDao.updateApprove(conn, updateRoom);
-			
-			if(result == 1) {
+			//해당 숙소주인의 회원번호 얻기
+			int userno = adminRoomDao.selectUsernoByRoomno(conn, updateRoom);
+			//회원등급 바꾸기
+			int result2 = adminRoomDao.updateUserGrade(conn, userno);
+			if(result == 1 && result2 == 1) {
 				JDBCTemplate.commit(conn);
 			} else {
 				JDBCTemplate.rollback(conn);

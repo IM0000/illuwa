@@ -119,4 +119,46 @@ public class AdminRoomDaoImpl implements AdminRoomDao{
 		
 		return result;
 	}
+	
+	@Override
+	public int selectUsernoByRoomno(Connection conn, Room updateRoom) {
+		String sql = "SELECT user_no FROM room WHERE room_no = ?";
+		int userno = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, updateRoom.getRoomNo());
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				userno = rs.getInt("user_no");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return userno;
+	}
+	
+	@Override
+	public int updateUserGrade(Connection conn, int userno) {
+		String sql = "UPDATE users SET user_grade = ? WHERE user_no = ?";
+		int result = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, 2);
+			ps.setInt(2, userno);
+			
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		return result;
+	}
 }
